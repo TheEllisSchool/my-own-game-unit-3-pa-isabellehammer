@@ -40,10 +40,7 @@ public class GridButton extends JButton {
 		revealed = true;
 	}
 
-	public boolean TEXT_CHANGED_PROPERTY(String string) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	
 
