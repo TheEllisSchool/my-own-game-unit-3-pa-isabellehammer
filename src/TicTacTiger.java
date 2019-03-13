@@ -30,13 +30,13 @@ public class TicTacTiger extends JFrame {
 		setSize(600,600);
 		setResizable(false);
 		pack();
-		setLocationRelativeTo(null); // do I need this?
+		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
 	
-	private void initGUI() { // task 1 step 3
+	private void initGUI() { 
 		JLabel titleLabel = new JLabel("Tic Tac Tiger!!!");
 		Font titleFont = new Font (Font.SERIF, Font.BOLD + Font.ITALIC, 32);
 		titleLabel.setFont(titleFont);
@@ -126,18 +126,24 @@ public class TicTacTiger extends JFrame {
     	return (checkRowsForWin() || checkColumnsForWin() || checkDiagonalsForWin());
     }
 	
-	private boolean checkColumnsForWin() {
+	private boolean checkRowsForWin() {
     	for (int r = 0; r < 3; r++) {
     		if (grid[r][0].isRevealed() && grid[r][1].isRevealed() && grid[r][2].isRevealed()) {
+    			if ((grid[r][0].getText().equals("X") && grid[r][1].getText().equals("X") && grid[r][2].getText().equals("X")) || 
+    					(grid[r][0].getText().equals("O") && grid[r][1].getText().equals("O") && grid[r][2].getText().equals("O"))) {
     			return true;
+    		}
         }
     	}
         return false;
     }
 
-    private boolean checkRowsForWin() {
+    private boolean checkColumnsForWin() {
+    	//getText(); //where do I insert the getText function?
     	for (int r = 0; r < 3; r++) {
     		if (grid[0][r].isRevealed() && grid[1][r].isRevealed() && grid[2][r].isRevealed()) {
+    			if ((grid[0][r].getText().equals("X") && grid[1][r].getText().equals("X") && grid[2][r].getText().equals("X")) || 
+    					grid[0][r].getText().equals("O") && grid[1][r].getText().equals("O") && grid[2][r].getText().equals("O"))
     				return true;
     			
             }
@@ -147,10 +153,24 @@ public class TicTacTiger extends JFrame {
 
      private boolean checkDiagonalsForWin() {
     	 if (grid[0][0].isRevealed() && grid[1][1].isRevealed() && grid[2][2].isRevealed()) {
-    		 return true;
-    	 } else {
-    		 return false;
+    		 if ((grid[0][0].getText().equals("X") && grid[1][1].getText().equals("X") && grid[2][2].getText().equals("X")) || 
+    				 (grid[0][0].getText().equals("X") && grid[1][1].getText().equals("O") && grid[2][2].getText().equals("O"))) {
+    			 return true;
+    		 } else {
+    			 return false;
+    		 }
     	 }
+    			 
+    	if (grid[0][2].isRevealed() && grid[1][1].isRevealed() && grid[2][0].isRevealed()) {
+        	if ((grid[0][2].getText().equals("X") && grid[1][1].getText().equals("X") && grid[2][0].getText().equals("X")) || 
+        				 (grid[0][2].getText().equals("X") && grid[1][1].getText().equals("O") && grid[2][0].getText().equals("O"))) {
+        		return true;
+        	} else {
+        		return false;
+        	}
+    	} else {
+    		return false;
+    	}
     		 
     }
     

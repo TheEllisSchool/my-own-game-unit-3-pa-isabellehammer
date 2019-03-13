@@ -11,6 +11,8 @@ public class GridButton extends JButton {
 	private boolean revealed = false;
 	
 	
+	
+	
 	public GridButton(int r, int c) {
 		row = r;
 		col = c;
@@ -39,8 +41,6 @@ public class GridButton extends JButton {
 	public void reveal(){
 		revealed = true;
 	}
-
-	
 
 	
 
